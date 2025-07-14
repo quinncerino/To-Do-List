@@ -5,13 +5,13 @@ import time
 sg.theme('light green 6')
 
 clock = sg.Text('', key='clock')
-label = sg.Text("Type in a to-do:")
+label = sg.Text("Type in a task:")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
-add_button = sg.Button("Add")
+add_button = sg.Button(size=2, image_source="add.png", tooltip = 'Add task', key='Add')
 list_box = sg.Listbox(values=functions.get_todos(), key='todos', 
                       enable_events = True, size = [45, 10])
 edit_button = sg.Button("Edit")
-complete_button = sg.Button("Complete")
+complete_button = sg.Button(size=2, image_source="complete.png", tooltip = 'Complete task', key='Complete')
 exit_button = sg.Button("Exit")
 
 window = sg.Window('My To-Do App', 
@@ -20,13 +20,13 @@ window = sg.Window('My To-Do App',
                             [input_box, add_button], 
                             [list_box, edit_button, complete_button],
                             [exit_button]],
+                    #no_titlebar=True,
                     font = ('Helvetica', 20))
 
 
 
 while True:
     event, values = window.read(timeout=200) #window.read() returns a tuple containing:
-    window['clock'].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     # print(1, event) #Add
     # print(2, values) #the dictionary with key and value
     # print(3, values['todos'])
@@ -72,6 +72,9 @@ while True:
             window['todo'].update(value=values['todos'][0][:-1])
 
         case sg.WIN_CLOSED:
-            break
-
+            window.close()
+            exit()
+        
+    window['clock'].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
+        
 window.close()
