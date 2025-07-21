@@ -1,3 +1,5 @@
 # To-Do-List
 
-Deployed Web App Link: https://quinncerino-to-do-list-web-app-web-lxr3ar.streamlit.app/
+This is a desktop GUI project built using Python, which allows user to add and complete tasks throughout the day. This helps the user with organization and keeping track of to-do's.
+
+📋🗂️📌📝✅📅⏰✏️
